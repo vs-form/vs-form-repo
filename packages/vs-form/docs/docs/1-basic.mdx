@@ -1,0 +1,54 @@
+---
+name: 1. Basic Examples
+menu: Concepts
+---
+import Form from '../components'
+
+## Minimal Example
+Each schema has a `components` key , which defines the components-collection.
+This is a minimal schema with only 1 field defined:
+
+<Form schemaName={'minimal'} />
+
+## Components
+Each `component` has a `type` property.
+The types  can be divided into the following categories:
+
+### Containers
+
+Each `component` in a schema is children of a container (like form, panel, card or tab).
+The top-level container is the `root` container, which is usually a form tag.
+(But it can also be any other container like a panel or a card). If the root container is missing (like in the minimal example above), SchemaManger will add it.
+But usually you should be explicit and provide a root-key.
+
+### Data components
+
+The current values of the form are stored in the `values` object of the schema.
+It has a key for every data-component which has a `data.field` property.
+You can initialize it with your own values. You can also use the `data.default` property to provide default values.
+If no `values` property is provided, SchemaManger will add default values.
+
+### Static components
+Static components (like text or button), have no data-property.
+
+### Subschema
+
+See [Subschema](/docs-4-subschema/)
+
+### Custom components
+
+See [Custom components](/docs-5-custom/)
+
+### Form submission
+A Form can be submitted with the help of a button by adding a property `action: ButtonAction.save` to a button component.
+Alternatively, a Form can be submitted with SchemaManger.submit().
+Then the values will be validated and the `onSubmit()` event on the schema will be called.
+
+The cancel button has a `action: ButtonAction.cancel` property. This will revert the values since the last submit.
+Then the `onCancelValues` event will be called, if one is defined.
+
+## Basic Form with submit and cancel buttons
+
+<Form schemaName={'basic'} />
+
+

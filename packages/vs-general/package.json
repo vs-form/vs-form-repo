@@ -1,0 +1,37 @@
+{
+  "name": "@vs-form/vs-general",
+  "version": "0.7.3",
+  "description": "general components used by vs-app",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "start": "rollup -cw",
+    "clean-lib": "rimraf ./dist",
+    "compile": "rollup -c",
+    "clean-compile": "npm run clean-lib && rollup -c",
+    "lint": "tslint 'src/**/*.ts*'",
+    "link-packages": "yarn link @vs-form/vs-form",
+    "lint-fix": "tslint 'src/**/*.ts*' --fix",
+    "dist": "npm version patch && npm run clean-lib && npm run compile && npm publish"
+  },
+  "author": "Matthias Thaler vs.schema.form@gmail.com",
+  "license": "ISC",
+  "keywords": [],
+  "devDependencies": {
+    "rollup": "^1.8.0"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "3.x",
+    "@vs-form/vs-form": "^0.7.16",
+    "react": "16.x",
+    "react-dom": "16.x"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
+  }
+}

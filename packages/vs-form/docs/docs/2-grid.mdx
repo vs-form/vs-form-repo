@@ -1,0 +1,44 @@
+---
+name: 2. Grid System
+menu: Concepts
+---
+import Form from '../components'
+
+
+
+## Grid System
+
+vs-form has the [material-ui](https://material-ui.com/layout/grid/) responsive Grid System for
+a flexible layout on each device built in without hassle.
+Each component has a `gridItem` property which accpets the properties of the corresponding material-ui Grid component with `item=true`.
+
+    ...
+    gridItem: {
+      xs: 12,
+      sm: 10,
+      md: 8,
+      lg: 6
+      xl: 4,
+    },
+
+Each Container Component has a `gridConatiner` property which accpets the corresponding material-ui Grid component with `container=true`.
+
+    ...
+    gridContainer: {
+      direction: "column",
+      spacing: 16,
+      alignItems: "center",
+      alignContent: "stretch"
+    },
+
+
+<Form schemaName={'grid'} />
+
+
+## Interactive Demo
+
+Below is an interactive demo that lets you explore the visual results of the different settings of the gridItem and the gridContainer:
+
+<Form schemaName={'gridSystem'} />
+
+

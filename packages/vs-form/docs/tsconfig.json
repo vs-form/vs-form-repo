@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es6",
+      "es2017",
+      "dom"
+    ],
+    "rootDir": "./schemas/ts",
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "removeComments": false,
+    "outDir": "./schemas/js",
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "include": [
+    "schemas/ts/*"
+  ]
+}

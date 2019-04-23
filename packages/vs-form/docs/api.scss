@@ -1,0 +1,37 @@
+.api-table {
+  width: 100%;
+  font-family: Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.api-table-body {
+  vertical-align: middle;
+  border: 1px solid #dddddd;
+}
+
+tbody>tr:nth-child(even) {
+  background-color: #edeeea4b;
+}
+
+.api-prop {
+  font-size: 13px;
+  box-sizing: inherit;
+}
+
+
+.api-prop-type {
+  color: #932981;
+}
+
+.api-prop-default {
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.38);
+}
+
+.api-prop-description {
+  font-size: 12px;
+}
+
+.api-link {
+  font-size: 14px;
+  color: #0B5FFF;
+  cursor: pointer;
+}

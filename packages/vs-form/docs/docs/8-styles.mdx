@@ -1,0 +1,32 @@
+---
+name: 8. Styles
+menu: Concepts
+---
+
+import Form, {ApiHeader, ApiProp, Link} from '../components'
+
+# Styles
+
+
+## CSS Styles
+With the styles object, you can define <Link link="https://material-ui.com/customization/css-in-js/" text="css-styles" /> that then can be applied to the components via the className prop.
+
+Styles can be defined either on the schema or on a component:
+If defined on the schema, it can then be applied to any component in that schema.
+If defined on the component, it can only be applied to that component.
+
+## Inline-Styles
+
+Inline styles are defined with the props.style object. They offer less possibilities than CSS Styles (for example no pseudo classes), but are great
+for dynamic behavior.
+
+## CSS Styles Example
+
+This example show the use of a styled button and and pseudo classes like :hover or :focus on input fields.
+
+<Form schemaName={'styles'} />
+
+
+
+
+

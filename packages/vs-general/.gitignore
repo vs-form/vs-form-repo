@@ -1,0 +1,23 @@
+src/test/__snapshots__/
+.DS_Store
+node_modules/
+.nyc_output
+temptest.js
+/dist/
+/.rpt2*/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/coverage/
+/test/unit/coverage/
+/test/e2e/reports/
+selenium-debug.log
+stats.json
+/documentation/
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

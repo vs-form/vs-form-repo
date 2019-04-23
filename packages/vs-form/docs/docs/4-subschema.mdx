@@ -1,0 +1,69 @@
+---
+name: 4. Subschemas
+menu: Concepts
+---
+import Form from '../components'
+
+Like React-Components, a schema can be reused as a subschema.
+Subschemas are regular schemas, but they need a `name` property:
+
+    const subschema = {
+      name: 'address', // provide a name
+      components: {
+        ...
+      }
+    }
+
+Which then is referenced by the `schemaName` property:
+
+    const contactSchema = {
+      components: {
+        customerAddress: {
+          type: Component.subschema,
+          schemaName: 'address',      // reference the above schema
+          data: {
+            field: 'customerAddress',
+            dataType: DataType.object
+          }
+      }
+    }
+
+In the SchemaManger constructor, the subschema(s) used by that schema must be provided as an array as second argument:
+
+    const schemaManager = new SchemaManager(schema, [address])
+
+## Subschema address Example
+
+<Form schemaName={'addresses'} subschemaName={'address'}/>
+
+## Subschema as Array
+
+Using `dataType: 'array'`, subschemas can be used and edited as arrays.
+Records can be added, edited and deleted.
+
+The columns can be customised using the `columnSettings` property array.
+If it is not provided, all columns will be shown.
+
+    addresses: {
+      type: Component.subschema,
+      label: 'Addresses',
+      schemaName: 'address',
+      data: {
+        field: 'addresses',
+        dataType: DataType.array,
+      },
+      columnSettings: [
+        {
+          compId: 'name',
+          width: 200
+        },
+        {
+          compId: 'address',
+          autowidth: true
+        },
+      ]
+    },
+
+<Form schemaName={'addressesArray'} subschemaName={'address'}/>
+
+

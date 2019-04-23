@@ -1,0 +1,55 @@
+{
+  "name": "@vs-form/vs-form",
+  "version": "0.7.16",
+  "description": "A schema-based form generator component for React using material-ui",
+  "main": "dist/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "start": "rollup -cw",
+    "clean-lib": "rimraf ./dist",
+    "compile": "rollup -c",
+    "clean-compile": "npm run clean-lib && rollup -c",
+    "jest": "node --max_old_space_size=4096 ./node_modules/jest/bin/jest",
+    "test": "npm run jest",
+    "test-upd": "jest --updateSnapshot",
+    "test-err": "npm run jest src/test/SchemaErrors.test.tsx",
+    "test-single": "npm run jest src/test/SingleComponents.test.tsx",
+    "test-single-ext": "npm run jest src/test/SingleComponentsExt.test.tsx",
+    "test-sm": "npm run jest /src/schemaManager/test/test.ts",
+    "lint": "tslint 'src/**/*.ts*'",
+    "lint-fix": "tslint 'src/**/*.ts*' --fix",
+    "typedoc": "typedoc --out documentation src",
+    "compile-publish": "npm run test && npm version patch && npm run clean-lib && npm run compile && npm publish --access public"
+  },
+  "author": "Matthias Thaler vs.schema.form@gmail.com",
+  "license": "ISC",
+  "keywords": [
+    "vs-form",
+    "React",
+    "Form-Generator"
+  ],
+  "devDependencies": {
+    "@material-ui/lab": "^3.0.0-alpha.30",
+    "@types/react-text-mask": "^5.4.4",
+    "jest": "^23.6.0",
+    "react-number-format": "^4.0.7",
+    "rollup": "^1.8.0",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^8.0.3"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "3.x",
+    "react": "16.x",
+    "react-dom": "16.x"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "date-fns": "^2.0.0-alpha.27",
+    "lodash": "^4.17.11"
+  }
+}

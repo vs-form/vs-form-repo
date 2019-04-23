@@ -1,0 +1,143 @@
+---
+name: 2. SchemaManager
+menu: API
+
+---
+
+import {ApiHeader, ApiProp, Link} from '../components'
+
+# SchemaManager
+
+## Properties
+
+<ApiHeader>
+  <ApiProp
+  name="name"
+  type="string"
+  description="Name of the schema. Mandatory, if the schema should be used as a subschema."
+  />
+  <ApiProp
+  name="schema"
+  type=<Link link="/docs-9-1-schema" text="ISchema" sameTab/>
+  description="The schema which was passed in the contructor."
+  />
+  <ApiProp
+  name="schemaList"
+  type=<span>Array of <Link link="/docs-9-1-schema" text="ISchema" sameTab/></span>
+  description="array of schemas that was passed in the constructor."
+  />
+  <ApiProp
+  name="validationErrors"
+  type=<span>Array of <Link link="/docs-9-1-types#ivalidationerror" text="IValidationError" sameTab/></span>
+  description=<div>array of validations errors. Reulst of SchemaManager.submit() or SchemaManager.validateValuesSchema(). See also <Link link="/docs-3-validation" text="Validation"/></div>
+  />
+  <ApiProp
+  name="errors"
+  type="Array"
+  description="Array of structural errors in the schema. Result of SchemaManager.checkSchema()."
+  />
+  <ApiProp
+  name="dataStateChanged"
+  def="false"
+  type="boolean"
+  description="When the values has been edited by a user, dataStateChanged changes to true. It changes back to false only after:  1. succesful submit 2. cancelValues() method."
+  />
+</ApiHeader>
+
+## Methods
+
+<ApiHeader isEvents>
+  <ApiProp
+  name="constructor"
+  parameter={['schema', 'Schema-definition', 'schemaList', 'List of subschemas']}
+  description="The constructor of SchemaManager."
+  />
+  <ApiProp
+  name="render"
+  parameter={['callback', 'function to execute after render.']}
+  description="Renders the form."
+  />
+  <ApiProp
+  name="renderComponent"
+  parameter={['component', 'component to render', 'callback', 'callback: function to execute after render.']}
+  description="Renders a single component."
+  />
+  <ApiProp
+  name="renderComponents"
+  parameter={['array of components', 'components to render', 'callback', 'callback: function to execute after render.']}
+  description="Renders a single component."
+  />
+  <ApiProp
+  name="focusComponent"
+  parameter={['component', 'component to focus', 'makeComponentVisible', 'If true calls makeComponentVisible function (default true).']}
+  description="Set the focus to a input-component."
+  />
+  <ApiProp
+  name="makeComponentVisible"
+  parameter={['component', 'component to make visible.']}
+  description="If the specified component is not visible because it's in a tab which is not active, or a panel which is collapsed, this method will make it visible by activating the tab or expanding the panel."
+  />
+  <ApiProp
+  name="submit"
+  parameter="none"
+  description="validates the values. Return true , if successful and calls the onSubmit event of the schema and sets dataStateChanged to false."
+  />
+  <ApiProp
+  name="cancelValues"
+  parameter="none"
+  description="Reverts back the values to the initial values or the values since the last submit."
+  />
+  <ApiProp
+  name="getComponentById"
+  parameter={['id', '(string) key of component']}
+  description="Returns a component or undefined."
+  />
+  <ApiProp
+  name="getComponentByFieldPath"
+  parameter={['fieldPath', '(string) field path']}
+  description="Finds a component by field path. If the field is in a subschema add the subschema field (e.g. address.name). Returns a component or undefined."
+  />
+  <ApiProp
+  name="clearValueErrors"
+  parameter="none"
+  description="Clears the validation errors."
+  />
+  <ApiProp
+  name="validateValuesSchema"
+  parameter="none"
+  description="Validates the current values. Fills the validationErrors array with errors. Returns true, if no validation errors."
+  />
+  <ApiProp
+  name="getSchemaValue"
+  parameter={['component', 'component to query for the value', 'arrayId', 'Record Id if value is in Subschema Array']}
+  description="Returns the value of a component."
+  />
+  <ApiProp
+  name="updateValue"
+  parameter={['field', '(string) fieldname', 'value', 'Value to update']}
+  description="Update the value in the schema by the field. Always call this method if you want to update a value in the schema and want to validate. See also updateSchemaValue"
+  />
+  <ApiProp
+  name="updateSchemaValue"
+  parameter={['component', 'component to update the value', 'value', 'Value to update', 'arrayId', 'Record Id if value is in Subschema Array']}
+  description="Update the value in the schema by component. Always call this method if you want to update a value in the schema and want to validate. Besides this, this also does the following (if defined): 1. calls the onBeforChange event, 2. applies any modifiers, 3. validates the value, 4. calls the onChange event of the component and of the schema."
+  />
+  <ApiProp
+  name="changeExpanded"
+  parameter={['component', '(IComponentExpansionPanel) ExpansionPanel to expand', 'expanded', '(boolean) expand / collapse']}
+  description="Expand / collapse a ExpansionPanel by code. "
+  />
+  <ApiProp
+  name="changeActiveTab"
+  parameter={['component', '(IComponentTabs) Tabs Component', 'activeTab', '(number) index of tab to be activated (beginning from 0)']}
+  description="Activate a tab page by code. "
+  />
+  <ApiProp
+  name="checkSchema"
+  parameter="none"
+  description="Check the schema for any structural errors. Returns the errors array, if there are errors."
+  />
+
+
+</ApiHeader>
+

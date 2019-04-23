@@ -1,0 +1,59 @@
+---
+name: 7. Events
+menu: Concepts
+---
+
+import Form, {TableForm} from '../components'
+
+## Events and methods
+
+Events of the schema and the individual components allows you to hook into the different lifecycle methods.
+The parameter of an event is an object, which gives you access to the current schema and the SchemaManager.
+Events of a component also gives you access to the inducing component, and in data-components the value.
+
+
+    const schema = {
+      onCreated(p) {
+        p.schema.values = ... //  access schema
+        p.schemaManager...    // access SchemaManager methods
+      },
+      onChange(p) {
+      },
+      components: {
+        text1: {
+          type: Component.textinput,
+          data: {
+            field: 'text1',
+            dataType: DataType.string,
+            onChange(p) {
+              const comp = p.schema.components.text2
+              p.schemaManager.updateValue('text2', p.value)
+              p.schemaManager.renderComponents([comp])
+            },
+          },
+        }
+      }
+    }
+
+
+
+## Dynamically change properties
+
+Oftentimes, we want to change props depending what the user enters.
+For that, use the onChange or OnBeforeChange event-handler.
+To change values or properties of components at runtime, just changing the props is not enough though.
+Also the `render` or `renderComponent(s)` method of the `SchemaManager` has to be called.
+
+<Form schemaName={'dynamic'} />
+
+## Pass parameters to the schema
+
+A common scenario is to use data from outside within a schema.
+You can do that by simply wrapping the schema in a function and pass the data as parameters,
+similar to a react functional component:
+
+<Form schemaName={'dynamicPopulate'} />
+
+## CRUD Example
+
+<TableForm />

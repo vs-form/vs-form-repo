@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "outDir": "./dist",
+    "target": "es5",
+    "lib": ["es6", "es2017", "dom"],
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "allowJs": true,
+    // "noImplicitAny": true,
+    "removeComments": true,
+    // "declaration": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "sourceMap": true,
+    "jsx": "react"
+  },
+  "include": [
+    "./src/**/*.tsx",
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "./src/test/Form.test.tsx"
+  ]
+}

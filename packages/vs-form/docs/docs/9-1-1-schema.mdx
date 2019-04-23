@@ -1,0 +1,102 @@
+---
+name: 1. Schema
+menu: API
+
+---
+
+import {ApiHeader, ApiProp, Link} from '../components'
+
+# Schema
+
+## Properties
+
+<ApiHeader>
+  <ApiProp
+  name="name"
+  type="string"
+  description="Name of the schema. Mandatory, if the schema is used as subschema"
+  />
+  <ApiProp
+  name="node"
+  type="string"
+  description="The key of the component. Used internally"
+  />
+  <ApiProp
+  name="validationMethod"
+  type="number"
+  def="1"
+  description="Validation method. 1 = validate On Change 2 = validate On Submit"
+  />
+  <ApiProp
+  name="hideValidationErrorPanel"
+  type="boolean"
+  def="false"
+  description="if true, hides the validation error panel at the top. Errors are still shown on each input field."
+  />
+  <ApiProp
+  name="values"
+  type="object"
+  description="The current values of the form. It has a key for every data-component. If no `values` property is provided, SchemaManger will will add default values."
+  />
+  <ApiProp
+  name="components"
+  type="object"
+  description=<div>The <Link link="/docs-9-2-components" text="components" /> of the form.</div>
+  />
+  <ApiProp
+  name="styles"
+  type="object"
+  description=<div>The <Link link="https://material-ui.com/customization/css-in-js/" text="CSS in JS" /> styles object defined. Defines css-styles that then can be applied to the components via the className prop.</div>
+  />
+  <ApiProp
+  name="disabled"
+  type="boolean"
+  description="Sets the form and all components disabled."
+  />
+</ApiHeader>
+
+
+## Events
+
+Use these events to hook into the different lifecycles and events of the schema. Use the paramters to access the schema (component properties, values) and the SchemaManger.
+
+See also <Link link="/docs-7-dynamic" text="Events and methods" />
+
+<ApiHeader isEvents>
+  <ApiProp
+  name="onCreated"
+  parameter=<Link link="/docs-9-3-types#ISchemaEventParams" text="ISchemaEventParams" sameTab/>
+  description="Called when SchemaManger has created the schema. Use this to event to initialize values or set properties on the components."
+  />
+  <ApiProp
+  name="onDidMount"
+  parameter=<Link link="/docs-9-3-types" text="ISchemaEventParams" sameTab/>
+  description="Called when all the components mounted. Corrresponds to the React componentDidMount event."
+  />
+  <ApiProp
+  name="onWillUnmount"
+  parameter=<Link link="/docs-9-3-types" text="ISchemaEventParams" sameTab/>
+  description="Called when all the components gets unmounted. Corrresponds to the React componentWillUnmount event."
+  />
+  <ApiProp
+  name="onChange"
+  parameter=<Link link="/docs-9-3-types" text="IDataEvent" sameTab/>
+  description="Called when an input value of a component changed."
+  />
+  <ApiProp
+  name="onSubmit"
+  parameter=<Link link="/docs-9-3-types" text="ISchemaEventParams" sameTab/>
+  description="Called on submit of the form."
+  />
+  <ApiProp
+  name="onCancelValues"
+  parameter=<Link link="/docs-9-3-types" text="ISchemaEventParams" sameTab/>
+  />
+  <ApiProp
+  name="validate"
+  parameter=<Link link="/docs-9-3-types" text="ISchemaEventParams" sameTab/>
+  description="Called on validation form. Return a string (the error message) if the validation fails. Return a falsy value like an empty string if it succeeds."
+  />
+
+</ApiHeader>
+

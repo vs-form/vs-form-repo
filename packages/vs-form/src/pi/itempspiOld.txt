@@ -1,0 +1,243 @@
+import * as React from 'react'
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import { isArray, isObject, trimEnd, toNumber } from '../../schemaManager/lodash'
+import IconButton from '../../generalComponents/IconButton'
+
+import BaseFormControl from '../BaseFormControl'
+import Menu from '../../generalComponents/Menu'
+import { errs, types, fieldValidators } from '../../schemaManager/lodash'
+import { ItemProps, ItemDataProps } from '../../../types'
+
+import { enums, strings, common } from '../../schemaManager/lodash'
+
+enum ModifyValueAction {
+  number,
+  text,
+  missingNumber,
+  missingText
+}
+
+export interface IItemstState {
+  value: string,
+  warning: string,
+  modifyItemsEl?: HTMLElement
+}
+
+export default class VsItemsPi extends React.Component<ItemProps, IItemstState> {
+  constructor(props: ItemProps) {
+    super(props)
+    this.state = {
+      value: this.itemsToString(this.props.schemaManager.getSchemaValue(this.props.comp)),
+      warning: ''
+    }
+  }
+
+  public changeValue = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const value = evt.target.value
+    this.setState({ value })
+  }
+
+  public applyChanges = (p: ItemDataProps) => () => {
+    const errors: string[] = []
+    const list = this.stringToItems(this.state.value, errors)
+    this.setState({ warning: '' })
+    if (errors.length === 0) {
+      const validateError: types.ISchemaError | string = fieldValidators.checkItemsInSelect(list, this.getDataType())
+      if (validateError !== '') {
+        if ((validateError as types.ISchemaError).type === 'warning') {
+          const warning = this.schemaErrorToString(validateError as types.ISchemaError)
+          this.setState({ warning })
+        } else {
+          errors.push(this.schemaErrorToString(validateError as types.ISchemaError))
+        }
+      }
+    }
+
+    if (errors.length === 0) {
+      this.setState({ value: this.itemsToString(list) })
+      p.updateValue(list)
+    } else {
+      p.setError(errors.join('\n'))
+    }
+  }
+  public sortItems = (sortByValue: boolean) => () => {
+    const errors: string[] = []
+    const list = this.stringToItems(this.state.value, errors)
+    if (errors.length === 0) {
+      if (sortByValue) {
+        if (this.getDataType() === enums.DataType.number) {
+          list.sort((a, b) => ((a.value as number) - (b.value as number)))
+        } else {
+          list.sort((a, b) => {
+            if (a.value < b.value) {
+              return -1
+            } else
+              if (a.value > b.value) {
+                return 1
+              } else { return 0 }
+          })
+        }
+      } else {
+        list.sort((a, b) => {
+          if (a.text < b.text) {
+            return -1
+          } else
+            if (a.text > b.text) {
+              return 1
+            } else { return 0 }
+        })
+      }
+      this.setState({ value: this.itemsToString(list) })
+    }
+  }
+
+  public modifyItemsValues = (action: ModifyValueAction) => () => {
+    const errors: string[] = []
+    let list = this.stringToItems(this.state.value, errors)
+    let highestNum: number = 1
+    const getHighestNum = () => list.forEach((i) => {
+      if (i.value && common.valueIsNumber(i.value)) {
+        const h = toNumber(i.value)
+        if (h > highestNum) { highestNum = h }
+      }
+    })
+    const incHighestNum = (): number => {
+      highestNum++
+      return highestNum
+    }
+    if (action === ModifyValueAction.number) {
+      if (this.getDataType() === enums.DataType.number) {
+        list = list.map((i, ind) => ({ value: (ind + 1), text: i.text }))
+      } else {
+        list = list.map((i, ind) => ({ value: (ind + 1), text: i.text }))
+      }
+    } else if (action === ModifyValueAction.text) {
+      if (this.getDataType() === enums.DataType.string) {
+        list = list.map((i) => ({ value: i.text, text: i.text }))
+      }
+    } else if (action === ModifyValueAction.missingNumber) {
+      getHighestNum()
+      list.forEach((i) => {
+        if (i.value === '') {
+          if (this.getDataType() === enums.DataType.number) {
+            i.value = incHighestNum()
+          } else {
+            i.value = incHighestNum().toString()
+          }
+        }
+      })
+    } else if (action === ModifyValueAction.missingText) {
+      if (this.getDataType() === enums.DataType.string) {
+        list.forEach((i) => {
+          if (i.value === '') {
+            i.value = i.text
+          }
+        })
+      }
+    }
+    this.setState({ value: this.itemsToString(list) })
+  }
+
+  public renderComp = (p: ItemDataProps) => (
+    <React.Fragment>
+      <div>
+        <IconButton icon="check" onClick={this.applyChanges(p)} tooltip={strings.pi.apply} />
+        <IconButton icon="sort-numeric" onClick={this.sortItems(true)} tooltip={strings.pi.sortByValue} />
+        <IconButton icon="sort-alphabetical" onClick={this.sortItems(false)} tooltip={strings.pi.sortByText} />
+        <IconButton icon="pencil" onClick={this.showModifyItems} tooltip={strings.pi.modifyValues} />
+        <Menu anchorEl={this.state.modifyItemsEl} items={this.modifyItems()} onRequestClose={this.hideModifyItems} />
+      </div>
+      <InputLabel>{(p.comp as types.IComponentTextInput).label}</InputLabel>
+      <Input value={this.state.value} onChange={this.changeValue} multiline={true} rows={8} />
+      {this.state.warning &&
+        <FormHelperText>Warning: {this.state.warning}</FormHelperText>
+      }
+
+    </React.Fragment>
+  )
+
+  public render() {
+    return (
+      <BaseFormControl {...this.props}>
+        {this.renderComp}
+      </BaseFormControl>
+    )
+  }
+
+  private itemsToString = (items: types.ISelectItemList): string => {
+    if (!isArray(items)) {
+      return ''
+    }
+    return items.map((e: types.ISelectItem) => {
+      if (isObject(e) && e.value) {
+        return e.value.toString() + ';' + e.text
+      }
+    }).join('\n')
+  }
+
+  private stringToItems = (str: string, errors: string[]): types.ISelectItemList => {
+    const dataType: enums.DataType = this.getDataType()
+    const addErr = (line: number, err: string) => errors.push(strings.errorMessagesFields.lineNr + (line + 1).toString() + ': ' + err)
+    return trimEnd(str).split('\n').map((el: string, ind: number) => {
+      const pos = el.indexOf(';')
+      let value: string | number
+      let text: string
+      if (pos > -1) {
+        value = ''
+        const val = el.substring(0, pos).trim()
+        if (val === '') {
+          addErr(ind, strings.errorMessagesFields.valueNotProvided)
+        }
+        if (dataType === enums.DataType.number) {
+          if (!common.valueIsNumber(val)) {
+            addErr(ind, strings.errorMessagesFields.valueMustBeNumber)
+          } else {
+            value = toNumber(val)
+          }
+        } else {
+          value = val
+        }
+        text = el.substring(pos + 1).trim()
+      } else {
+        addErr(ind, strings.errorMessagesFields.provideValueAndText)
+        value = ''
+        text = el
+      }
+      return { value, text }
+    })
+  }
+
+  private getDataType = (): enums.DataType => {
+    return this.props.schemaManager.getValue('data.dataType')
+  }
+
+  private schemaErrorToString = (error: types.ISchemaError): string => {
+    const addProp = (prop: any, s: string) => (prop ? ' ' + s + ' ' + prop + ' ' : '')
+    const str = addProp(error.itemNo, strings.errorMessagesFields.lineNr)
+      + errs.ErrorStrings[error.errcode]
+      + addProp(error.addOn, '')
+    return str
+  }
+
+  private showModifyItems = (evt: React.MouseEvent<HTMLElement>) => {
+    this.setState({ modifyItemsEl: evt.currentTarget })
+  }
+
+  private hideModifyItems = () => {
+    this.setState({ modifyItemsEl: undefined })
+  }
+
+  private modifyItems = () => {
+    const list: any[] = []
+    const addItem = (label: string, action: ModifyValueAction) => list.push({ label, onClick: this.modifyItemsValues(action) })
+    addItem(strings.pi.setValuesNumber, ModifyValueAction.number)
+    addItem(strings.pi.missingSetValuesNumber, ModifyValueAction.missingNumber)
+    if (this.getDataType() === enums.DataType.string) {
+      addItem(strings.pi.setValuesText, ModifyValueAction.text)
+      addItem(strings.pi.missingSetValuesText, ModifyValueAction.missingText)
+    }
+    return list
+  }
+}

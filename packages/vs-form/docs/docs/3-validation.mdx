@@ -1,0 +1,70 @@
+---
+name: 3. Validation
+menu: Concepts
+---
+import Form from '../components'
+
+
+## Validation properties
+
+Each data-sensitive component of vs-form provides validation properties and methods in the `data.validation` property:
+
+    validations: {
+      required: boolean,
+      allowedValues: [], // array of allowed values
+      min: number, // for string fields: minimal length; for numeric fields: minimal value
+      max: number, // for string fields: maximal length; for numeric fields: maximal value
+      regex: // regular Expression which the input must satisfy
+      validate(p) {} // function to validate the input.
+                     // return a string (the error message) if the validation fails.
+                     // return a falsy value like an empty string if it succeeds.
+    }
+
+## Interactive Demo
+
+The form is validated by default on change (on every keystroke). You can change it to only validate on submit in the `validationMethod` property.
+The errors are shown additionally on a panel on top of the form. If you want to hide it, you can set it in the `hideValidationErrorPanel` property.
+
+    const schema = {
+      ...
+      validationMethod: ValidationMethod.validateOnSubmit,
+      hideValidationErrorPanel: true,
+      ...
+    }
+
+<Form schemaName={'validation'} />
+
+## Server Validation
+
+Using Node.js, you can use the SchemaManager.validateValuesSchema function to validate values on the server:
+[Demo](todo)
+
+    const express = require('express');
+    const bodyParser = require('body-parser')
+    const path = require('path');
+    const SchemaManger = require('@vs-form/vs-form').SchemaManager;
+    const schema = require('./src/schema').default
+
+    const app = express();
+    app.use(express.static(path.join(__dirname, 'build')));
+    app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.json())
+
+    app.post('/validate', function (req, res) {
+      schema.values = req.body
+      const schemaManger = new SchemaManger(schema)
+      if (schemaManger.validateValuesSchema()) {
+        console.log('validation ok')
+      } else {
+        console.log('validation nok')
+        console.log(schemaManger.printValueErrors())
+      }
+    });
+
+    app.get('/', function (req, res) {
+      res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    });
+
+    app.listen(4000);
+
+

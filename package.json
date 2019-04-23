@@ -1,0 +1,33 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "@material-ui/core": "^3.9.3",
+    "@types/classnames": "^2.2.7",
+    "@types/enzyme": "^3.9.1",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^23.3.14",
+    "@types/lodash": "^4.14.123",
+    "@types/node": "^10.14.4",
+    "@types/react": "^16.8.12",
+    "@types/react-dom": "^16.8.3",
+    "@types/react-jss": "^8.6.3",
+    "@types/store": "^2.0.1",
+    "cross-env": "^5.2.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-to-json": "^3.3.5",
+    "lerna": "^3.13.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-jss": "^8.6.1",
+    "react-test-renderer": "^16.8.6",
+    "rimraf": "^2.6.3",
+    "rollup-plugin-typescript2": "^0.20.1",
+    "source-map-support": "^0.5.11",
+    "tslint": "^5.15.0",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.4.1"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,45 @@
+{
+  "name": "@vs-form/vs-lab",
+  "version": "0.7.5",
+  "description": "Components from material-ui/lab for vs-form",
+  "main": "dist/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "compile": "rollup -c",
+    "clean-compile": "npm run clean-lib && rollup -c",
+    "start": "rollup -cw",
+    "clean-lib": "rimraf ./dist",
+    "link-packages": "yarn link @vs-form/vs-form",
+    "test": "jest",
+    "test-upd": "jest --updateSnapshot",
+    "lint": "tslint 'src/**/*.ts*'",
+    "lint-fix": "tslint 'src/**/*.ts*' --fix",
+    "compile-publish": "npm run test && npm version patch && npm run clean-lib && npm run compile && npm publish --access public"
+  },
+  "author": "Matthias Thaler vs.schema.form@gmail.com",
+  "license": "ISC",
+  "keywords": [
+    "vs-form",
+    "react"
+  ],
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "rollup": "^1.8.0",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^8.0.3"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "3.x",
+    "@vs-form/vs-form": "^0.7.0",
+    "react": "16.x",
+    "react-dom": "16.x"
+  },
+  "dependencies": {
+    "@material-ui/lab": "^3.0.0-alpha.30"
+  }
+}

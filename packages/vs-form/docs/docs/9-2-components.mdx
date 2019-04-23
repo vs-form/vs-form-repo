@@ -1,0 +1,517 @@
+---
+name: 3. Components
+menu: API
+
+---
+
+import {ApiHeader, ApiProp, Link, ExtendLink} from '../components'
+
+# Components
+
+This document lists the available components and their properties, wich are defined by the `type`.
+
+## Containers
+
+### panel
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonContainerProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="props"
+  type="object"
+  />
+  <ApiProp
+  name="props.className"
+  type="string"
+  description="css class(es) applied to the form-component."
+  />
+  <ApiProp
+  name="props.style"
+  type="object"
+  description="inline-style(s) applied to the form-component"
+  />
+  <ApiProp
+  name="props.HeaderTypographyProps"
+  type="object"
+  description="props applied to the label"
+  />
+</ApiHeader>
+
+### tabs
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonContainerProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="tabs"
+  type="string[]"
+  description="array of tab keys."
+  />
+  <ApiProp
+  name="activeTab"
+  type="number"
+  description="Set active tab (starting with 0)."
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to tabs parent paper component. See <Link link="https://material-ui.com/api/paper/" text="Paper"/></div>
+  />
+  <ApiProp
+  name="props.AppBarProps"
+  type="object"
+  description=<div>props applied to tabs parent AppBar component. See <Link link="https://material-ui.com/api/app-bar/" text="AppBar"/></div>
+  />
+  <ApiProp
+  name="props.TabsProps"
+  type="object"
+  description=<div>props applied to tabs component. See <Link link="https://material-ui.com/api/tabs/" text="Tabs"/></div>
+  />
+  <ApiProp
+  name="props.TabProps"
+  type="object"
+  description=<div>props applied to tab components. See <Link link="https://material-ui.com/api/tab/" text="Tab"/></div>
+  />
+  <ApiProp
+  name="props.IconProps"
+  type="object"
+  description=<div>props applied to icon of the tabs. See <Link link="https://material-ui.com/api/icon/" text="Icon"/></div>
+  />
+</ApiHeader>
+
+##### events
+
+<ApiHeader isEvents>
+  <ApiProp
+  name="onBeforeChange"
+  parameter=<Link link="/docs-9-3-types" text="ITabBeforeChangeEvent"/>
+  description="Called before the user switches to a new tab."
+  />
+  <ApiProp
+  name="onChange"
+  parameter=<Link link="/docs-9-3-types" text="ITabChangedEvent"/>
+  description="Called when the user went to a new tab."
+  />
+</ApiHeader>
+
+
+### tab
+
+See <Link link="#panel" text="panel" sameTab/>
+
+### form
+
+See <Link link="#panel" text="panel" sameTab/>
+
+### card
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonContainerProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="subheader"
+  type="string"
+  description="defines a subtitle"
+  />
+  <ApiProp
+  name="icon"
+  type=<Link link="/docs-9-3-types" text="IIcon"/>
+  description="defines an icon"
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui card component. See <Link link="https://material-ui.com/api/card/" text="Card"/></div>
+  />
+  <ApiProp
+  name="props.CardHeaderProps"
+  type="object"
+  description=<div>props applied to the CardHeader. See <Link link="https://material-ui.com/api/card-header/" text="CardHeader"/></div>
+  />
+  <ApiProp
+  name="props.CardContentProps"
+  type="object"
+  description=<div>props applied to the CardContent. See <Link link="https://material-ui.com/api/card-content/" text="CardContent"/></div>
+  />
+  <ApiProp
+  name="props.HeaderTypographyProps"
+  type="object"
+  description=<div>props applied to the HeaderTypography. See <Link link="https://material-ui.com/api/typography/" text="HeaderTypography"/></div>
+  />
+  <ApiProp
+  name="props.SubHeaderTypographyProps"
+  type="object"
+  description=<div>props applied to the SubHeaderTypography. See <Link link="https://material-ui.com/api/typography/" text="SubHeaderTypography"/></div>
+  />
+</ApiHeader>
+
+### expansionspanel
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonContainerProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="expanded"
+  type="boolean"
+  def="true"
+  description="If false, the panel is collapsed."
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui card component. See <Link link="https://material-ui.com/api/expansion-panel/" text="expansion-panel"/></div>
+  />
+  <ApiProp
+  name="props.ExpansionPanelSummaryProps"
+  type="object"
+  description=<div>props applied to the Header.</div>
+  />
+  <ApiProp
+  name="props.ExpansionPanelDetailsProps"
+  type="object"
+  description=<div>props applied to the Details.</div>
+  />
+  <ApiProp
+  name="props.TypographyProps"
+  type="object"
+  description=<div>props applied to the Header Text.</div>
+  />
+  <ApiProp
+  name="props.IconProps"
+  type="object"
+  description=<div>props applied to the expand-Icon.</div>
+  />
+</ApiHeader>
+
+## Fields
+
+### TextInput
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonInputFieldProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui textfield component. See <Link link="https://material-ui.com/api/text-field/" text="text-field"/></div>
+  />
+</ApiHeader>
+
+### MaskInput
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonInputFieldProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="maskProps"
+  type="object"
+  description=<div>Type definitions for react-text-mask. See <Link link="https://github.com/text-mask/text-mask/tree/master/react" text="react-text-mask"/>.</div>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui textfield component. See <Link link="https://material-ui.com/api/text-field/" text="text-field"/></div>
+  />
+</ApiHeader>
+
+### Number
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonInputFieldProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui textfield component. See <Link link="https://material-ui.com/api/text-field/" text="text-field"/></div>
+  />
+</ApiHeader>
+
+
+### Integer
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonInputFieldProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui textfield component. See <Link link="https://material-ui.com/api/text-field/" text="text-field"/></div>
+  />
+</ApiHeader>
+
+### Slider
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonInputFieldProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui slider component. See <Link link="https://material-ui.com/lab/api/slider/#slider-api" text="text-field"/></div>
+  />
+</ApiHeader>
+
+### FormattedNumber
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonInputFieldProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="numberFormatProps"
+  type="object"
+  description=<div>props applied to react-number-format component. See <Link link="https://github.com/s-yadav/react-number-format" text="react-number-format"/></div>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui text-field component. See <Link link="https://material-ui.com/lab/api/slider/#slider-api" text="text-field"/></div>
+  />
+</ApiHeader>
+
+### Date
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonInputFieldProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui textfield component. See <Link link="https://material-ui.com/api/text-field/" text="text-field"/></div>
+  />
+</ApiHeader>
+
+### DateExt
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonInputFieldProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui textfield component. See <Link link="https://material-ui.com/api/text-field/" text="text-field"/></div>
+  />
+</ApiHeader>
+
+### Select
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonInputFieldProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="autocomplete"
+  type="boolean"
+  description="autocomplete"
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui textfield component. See <Link link="https://material-ui.com/api/text-field/" text="text-field"/></div>
+  />
+</ApiHeader>
+
+### SelectExt
+
+<ExtendLink link="ICommonProps" />,  <ExtendLink link="ICommonInputFieldProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui textfield component. See <Link link="https://material-ui.com/api/text-field/" text="text-field"/></div>
+  />
+</ApiHeader>
+
+### RadioGroup
+
+<ExtendLink link="ICommonProps" />
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui radio-group component. See <Link link="https://material-ui.com/api/radio-group/#radiogroup-api" text="radio-group"/></div>
+  />
+</ApiHeader>
+
+### Checklistbox
+
+<ExtendLink link="ICommonProps" />
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui radio-group component. See <Link link="https://material-ui.com/api/radio-group/#radiogroup-api" text="radio-group"/></div>
+  />
+</ApiHeader>
+
+### Checkbox
+
+<ExtendLink link="ICommonProps" noExt/>
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui radio-group component. See <Link link="https://material-ui.com/api/radio-group/#radiogroup-api" text="radio-group"/></div>
+  />
+</ApiHeader>
+
+### Switch
+
+<ExtendLink link="ICommonProps" />
+
+<ApiHeader>
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataPropsInput" text="ICommonDataPropsInput"/>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>props applied to material-ui radio-group component. See <Link link="https://material-ui.com/api/radio-group/#radiogroup-api" text="radio-group"/></div>
+  />
+</ApiHeader>
+
+
+## Subschema
+
+### Subschema
+
+<ExtendLink link="ICommonProps" />
+
+<ApiHeader>
+  <ApiProp
+  name="schemaName"
+  type="string"
+  description="Name of the subschema."
+  />
+  <ApiProp
+  name="schema"
+  type="object"
+  description="The schema. Used internally"
+  />
+  <ApiProp
+  name="data"
+  type=<Link link="/docs-9-3-types/#ICommonDataProps" text="ICommonDataProps"/>
+  />
+  <ApiProp
+  name="data.dataType"
+  type="string (object or array)"
+  description="If 'array', subschemas can be used and edited as arrays."
+  />
+  <ApiProp
+  name="keyField"
+  type="string"
+  description="Provide a fieldname of the schema with unique values of each record (like an id). If not provided SchemaManager will add the keyfield '__rec_id__' with unique id's"
+  />
+  <ApiProp
+  name="rowsPerPage"
+  type="number"
+  description="Defines number of rows per page."
+  />
+  <ApiProp
+  name="hidePagination"
+  type="boolean"
+  description="If true, hides the pagination panel."
+  />
+  <ApiProp
+  name="columnSettings"
+  type="array of objects"
+  description="Define the visible columns, if the subschema is an array and their width, etc. If not provided all fields will be shown with automatic width."
+  />
+  <ApiProp
+  name="columnSettings.compId"
+  type="string"
+  description="The key of the component, which is shown."
+  />
+  <ApiProp
+  name="columnSettings.autowidth"
+  type="boolean"
+  def="false"
+  description="If true, width will be computed based on the content."
+  />
+  <ApiProp
+  name="columnSettings.width"
+  type="number"
+  description="The width of the column. (If autowidth is false)"
+  />
+  <ApiProp
+  name="columnSettings.widthUnit"
+  def="px"
+  type="string"
+  description="The width unit. E.g. px, em, cm"
+  />
+  <ApiProp
+  name="columnSettings.alignRight"
+  def="false"
+  type="boolean"
+  description="Content is aligned right. Suitable for number values."
+  />
+  <ApiProp
+  name="columnSettings.sortable"
+  def="true"
+  type="boolean"
+  description="If true, the column is sortable."
+  />
+  <ApiProp
+  name="columnSettings.sortDirection"
+  def="none"
+  type="string (none, asc or desc)"
+  description="If sortable is true, defines the initial sortdirection."
+  />
+
+</ApiHeader>

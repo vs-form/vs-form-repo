@@ -1,0 +1,86 @@
+---
+name: 6. Icons
+menu: Concepts
+---
+
+import Form from '../components'
+
+## Icons
+
+### Material Design Icons
+
+vs-form supports [Material Design Icons](https://materialdesignicons.com/) font out of the box.
+
+Install it `npm install @mdi/font`
+and import it `import '@mdi/font/css/materialdesignicons.min.css'`.
+
+Now you can use it just by assigning the icon-name to the `icons` property (without the mdi-prefix):
+
+    icon: {
+      type: Component.icon,
+      icon: 'loading',
+      props: {
+        className: 'mdi-spin'
+      }
+    }
+
+### SVG Icons
+
+If you do not want to install the Material Design Icons Webfont,
+you can import them individually:
+
+    import AccessAlarmIcon from '@material-ui/icons/AccessAlarm'
+    ...
+
+    iconComp: {
+      type: Component.icon,
+      tooltip: 'Icon with imported Component',
+      component: AccessAlarmIcon,
+      gridItem: { md: 1 },
+    },
+
+
+or you can use SVG Icons by providing an SVG-Path like so:
+
+    icon1: {
+      type: Component.icon,
+      svg: 'M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z',
+    },
+
+*Tip*: The Material Design Icons Page also includes the svg property for every icon.
+
+### Other Components with Icons
+
+Icons are also used by other components like buttons, tabs, inputs etc.
+
+If you use the Material Design Icons Webfont, you can assign also an icon name property:
+
+    button1: {
+      type: Component.iconbutton,
+      icon: 'tractor'
+    },
+
+or you can use an icon component to assign it to the icon property as an `array` like so:
+
+    icon1: {
+      type: Component.icon,
+      svg: 'M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z',
+      gridItem: {
+        md: 1
+      },
+    },
+    icoBtn1: {
+      type: Component.iconbutton,
+      tooltip: 'Icon-Btn with mdi icon',
+      icon: ['icon1'],  // use the 'icon1' component above
+      gridItem: { md: 1 },
+    },
+
+### Icons example
+
+<Form schemaName={'icons'} mdi={true} />
+
+
+
+
+

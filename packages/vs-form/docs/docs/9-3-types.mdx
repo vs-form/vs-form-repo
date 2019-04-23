@@ -1,0 +1,338 @@
+---
+name: 4. Types
+menu: API
+---
+
+import {ApiHeader, ApiProp, ExtendLink, Link} from '../components'
+
+# Types
+
+This document lists the available types and interfaces used by vs-form.
+
+## ICommonProps
+
+<ApiHeader>
+  <ApiProp
+  name="id"
+  type="string"
+  description="the key of the component. In a subschema, it's prefixed by the schema name: eg. `adress.street`.  Used internally"
+  />
+  <ApiProp
+  name="node"
+  type="string"
+  description="the key of the component. Used internally"
+  />
+  <ApiProp
+  name="disabled"
+  type="boolean"
+  description="If true, component is disabled."
+  />
+  <ApiProp
+  name="gridItem"
+  type=<Link link="https://material-ui.com/api/grid/" text="GridProps"/>
+  description=<div><Link link="/docs-2-grid/" text="Grid"/>  property for layout.</div>
+  />
+  <ApiProp
+  name="styles"
+  type="object"
+  description=<div>
+    The <Link link="https://material-ui.com/customization/css-in-js/" text="CSS in JS" /> Styles object defined. Defines css-styles that then can be applied to the component via the className prop.
+    The styles can be also defined on the schema if you want them to use on different components. If they are defined on the component, they can be only used there.
+    </div>
+  />
+  <ApiProp
+  name="dense"
+  type="boolean"
+  def="false"
+  description="On certain componets, gives a denser look with smaller margins."
+  />
+  <ApiProp
+  name="hidden"
+  type="boolean"
+  def="false"
+  description="If true, component is not created."
+  />
+  <ApiProp
+  name="tooltip"
+  type="string or function"
+  description="If set, a tooltip will be shown."
+  />
+  <ApiProp
+  name="tooltipProps"
+  type="object"
+  description=<div>If tooltip is set, you can set tooltips props. See <Link link="https://material-ui.com/api/tooltip/" text="Tooltip" /></div>
+  />
+  <ApiProp
+  name="props"
+  type="object"
+  description=<div>Each component has a props object. These will be directly sent to the underlying (material ui) Component. Often a component consists of several such components.
+  Then the props will have sub-props in the form of xxxProps. For example the <Link link="#card" text="Card" sameTab/> consists of a Card, CardHeader, CardContents, HeaderTypography, SubHeaderTypography.</div>
+  />
+</ApiHeader>
+
+## ICommonContainerProps
+
+<ApiHeader>
+  <ApiProp
+  name="children"
+  type="string[]"
+  description="array of keys of the children components."
+  />
+  <ApiProp
+  name="gridContainer"
+  type=<Link link="https://material-ui.com/api/grid/" text="GridProps"/>
+  description=<div><Link link="/docs-2-grid/" text="Grid-parent"/> property for the layout.</div>
+  />
+  <ApiProp
+  name="label"
+  type="string of function"
+  description="label for the container component."
+  />
+</ApiHeader>
+
+
+## ICommonInputFieldProps
+
+<ApiHeader>
+  <ApiProp
+  name="label"
+  type="string or function"
+  description="label for the component."
+  />
+  <ApiProp
+  name="placeholder"
+  type="string"
+  description="Placeholder for input fields."
+  />
+  <ApiProp
+  name="hint"
+  type="string"
+  description="Hint-Text for input fields."
+  />
+  <ApiProp
+  name="prefix"
+  type="string or string array"
+  description="Prefix for input field. if string, a text will be shown as prefix. If an array, it speciefies the key of the components to show as prefix (e.g. an icon)."
+  />
+  <ApiProp
+  name="suffix"
+  type="string or string array"
+  description="Suffix for input field. if string, a text will be shown as suffix. If an array, it speciefies the key of the components to show as suffix (e.g. an icon)."
+  />
+</ApiHeader>
+
+## ICommonDataProps
+
+<ApiHeader>
+  <ApiProp
+  name="field"
+  type="string"
+  description="the data fieldname."
+  />
+  <ApiProp
+  name="dataType"
+  type="string"
+  description="The datatype of the field."
+  />
+  <ApiProp
+  name="default"
+  type="any value or function"
+  description="The default value of the field."
+  />
+  <ApiProp
+  name="validations"
+  type="object"
+  description="The validation options for the field."
+  />
+  <ApiProp
+  name="validations.required"
+  type="boolean or function"
+  description="Is the field required"
+  />
+  <ApiProp
+  name="validations.allowedValues"
+  type="array"
+  description="Array of allowed values"
+  />
+  <ApiProp
+  name="validations.min"
+  type="number"
+  description="For number fields: minimum value. For string fields: minimum length."
+  />
+  <ApiProp
+  name="validations.max"
+  type="number"
+  description="For number fields: maximum value. For string fields: maximum length."
+  />
+  <ApiProp
+  name="validations.regex"
+  type="regular Expression"
+  description="Regular expression which must be satisfield by the value of the field."
+  />
+  <ApiProp
+  name="validations.step"
+  type="number"
+  description="Only for progess bar: step number unit"
+  />
+  <ApiProp
+  name="validations.validate"
+  type="function"
+  description="Function to check if the value is correct. Return a string (the error message) if the value is erroneous. Return an empty string if the value is correct."
+  />
+  <ApiProp
+  name="modifiers"
+  type="object"
+  description="Modifiers to apply before the value is saved."
+  />
+  <ApiProp
+  name="modifiers.trim"
+  type="boolean"
+  description="Trims the value."
+  />
+  <ApiProp
+  name="modifiers.toLowerCase"
+  type="boolean"
+  description="Change to lower case."
+  />
+  <ApiProp
+  name="modifiers.toUpperCase"
+  type="boolean"
+  description="Change to upper case."
+  />
+  <ApiProp
+  name="modifiers.capitalize"
+  type="boolean"
+  description="capitalize the value."
+  />
+
+</ApiHeader>
+
+## ICommonDataPropsInput
+
+<ExtendLink link="ICommonDataProps" />
+
+<ApiHeader>
+  <ApiProp
+  name="dataType"
+  type="string"
+  description="The datatype of the field."
+  />
+</ApiHeader>
+
+
+## ICommonDataPropsSelect
+
+<ExtendLink link="ICommonDataProps" />
+
+<ApiHeader>
+  <ApiProp
+  name="dataType"
+  type="string | number | integer | arrayString | arrayNumber | arrayInteger,"
+  />
+  <ApiProp
+  name="items"
+  type="array of string or object of type {value, text}"
+  description="The items in the select list."
+  />
+</ApiHeader>
+
+
+## ISchemaEventParams
+
+<ApiHeader>
+  <ApiProp
+  name="schemaManager"
+  type=<Link link="/docs-9-3-types" text="SchemaManager" sameTab/>
+  description="The schemaManager instance used by that schema."
+  />
+  <ApiProp
+  name="schema"
+  type=<Link link="/docs-9-1-1-schema/" text="ISchema" sameTab/>
+  description="The schema instance."
+  />
+</ApiHeader>
+
+## IComponentEventParams
+
+<ExtendLink link="ISchemaEventParams" />
+
+<ApiHeader>
+  <ApiProp
+  name="component"
+  type=<Link link="/docs-9-1-1-schema/" text="IComponent" sameTab/>
+  description="The component that emitted the event."
+  />
+</ApiHeader>
+
+
+## IDataEventParams
+
+<ExtendLink link="IComponentEventParams" />
+
+<ApiHeader>
+  <ApiProp
+  name="value"
+  type="any"
+  description="The current value of the component, that emitted the event."
+  />
+</ApiHeader>
+
+
+## ITabChangedEvent
+
+<ExtendLink link="IComponentEventParams" />
+
+<ApiHeader>
+  <ApiProp
+  name="newTab"
+  type="number"
+  description="The index of the new tab."
+  />
+</ApiHeader>
+
+## ITabBeforeChangeEvent
+
+<ExtendLink link="ITabChangedEvent" />
+
+<ApiHeader>
+  <ApiProp
+  name="canChange"
+  type="boolean"
+  def="true"
+  description="Set to false to avoid changing to a new tab."
+  />
+</ApiHeader>
+
+## IIcon
+
+<ApiHeader>
+  <ApiProp
+  name="icon"
+  type="string or string[]"
+  def="true"
+  description=<div> See <Link link="/docs-6-icons/" text="Icons."/>If a string, defines a Material Design Icons name (without 'mdi-' suffix). if array, uses the key of a icon component.</div>
+  />
+</ApiHeader>
+
+
+## IValidationError
+
+<ApiHeader>
+  <ApiProp
+  name="error"
+  type="string"
+  description="The error message."
+  />
+  <ApiProp
+  name="comp"
+  type=<Link link="/docs-9-2-components/" text="Component"/>
+  description="The component which has the wrong value."
+  />
+  <ApiProp
+  name="arrayId"
+  type="any"
+  description="In case the value is an array, like in a subschema of type array, this defines the key of the record."
+  />
+</ApiHeader>
+
+

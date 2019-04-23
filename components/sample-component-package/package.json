@@ -1,0 +1,42 @@
+{
+  "name": "@vs-form/sample",
+  "version": "0.7.0",
+  "description": "Component xy for vs-form",
+  "main": "dist/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "compile": "npm run clean-lib && rollup -c",
+    "start": "rollup -cw",
+    "clean-lib": "rimraf ./dist",
+    "link-packages": "yarn link @vs-form/vs-form",
+    "test": "jest",
+    "test-upd": "npm run jest --updateSnapshot",
+    "lint": "tslint 'src/**/*.ts*'",
+    "lint-fix": "tslint 'src/**/*.ts*' --fix",
+    "dist": "npm run test && npm version patch && npm run clean-lib && npm run build && npm publish"
+  },
+  "author": "Matthias Thaler vs.schema.form@gmail.com",
+  "license": "ISC",
+  "keywords": [
+    "vs-form",
+    "react"
+  ],
+  "devDependencies": {
+    "jest": "^23.6.0",
+   "rollup": "^1.1.2"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "3.x",
+    "react": "16.x",
+    "react-dom": "16.x"
+  },
+  "dependencies": {
+    "@vs-form/vs-form": "^0.7.0",
+    "@vs-form/vs-schema": "^0.7.0"
+  }
+}

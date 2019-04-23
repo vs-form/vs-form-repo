@@ -1,0 +1,46 @@
+{
+  "name": "vs-form-app",
+  "version": "0.1.0",
+  "description": "example app for vs-form",
+  "private": true,
+  "dependencies": {
+    "@date-io/date-fns": "^1.1.0",
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
+    "@mdi/font": "^3.5.95",
+    "@vs-form/vs-form": "^0.7.15",
+    "@vs-form/vs-react-select": "^0.7.2",
+    "@vs-form/vs-ui-pickers": "^0.7.2",
+    "classnames": "^2.2.6",
+    "date-fns": "^2.0.0-alpha.27",
+    "js-beautify": "^1.9.1",
+    "material-ui-pickers": "^2.2.4",
+    "react": "^16.8.6",
+    "react-ace": "^6.4.0",
+    "react-dom": "^16.8.6",
+    "react-jss": "^8.6.1",
+    "react-scripts": "^2.1.8",
+    "react-select": "^2.4.2",
+    "text-mask-addons": "^3.8.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest",
+    "eject": "react-scripts eject",
+    "link-packages": "yarn link @vs-form/vs-form && yarn link @vs-form/vs-general && yarn link @vs-form/vs-lab && yarn link @vs-form/vs-react-select && yarn link @vs-form/vs-ui-pickers && yarn link @vs-form/vs-text-mask && yarn link @vs-form/vs-number-format",
+    "lint": "tslint 'src/**/*.ts*'",
+    "lint-fix": "tslint 'src/**/*.ts*' --fix"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^8.0.3"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
