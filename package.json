@@ -23,7 +23,7 @@
     "react-jss": "^8.6.1",
     "react-test-renderer": "^16.8.6",
     "rimraf": "^2.6.3",
-    "rollup-plugin-typescript2": "^0.20.1",
+    "rollup-plugin-typescript2": "^0.21.0",
     "source-map-support": "^0.5.11",
     "tslint": "^5.15.0",
     "tslint-react": "^4.0.0",

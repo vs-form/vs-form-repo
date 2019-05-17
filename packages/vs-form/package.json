@@ -1,13 +1,13 @@
 {
   "name": "@vs-form/vs-form",
-  "version": "0.7.16",
+  "version": "0.7.17",
   "description": "A schema-based form generator component for React using material-ui",
   "main": "dist/index.js",
   "module": "dist/es/index.js",
   "types": "dist/index.d.ts",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/vs-form/vs-form-repo"
+    "type": "git",
+    "url": "https://github.com/vs-form/vs-form-repo"
   },
   "files": [
     "dist"
