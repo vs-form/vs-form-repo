@@ -29,5 +29,8 @@
     "tslint-react": "^4.0.0",
     "typescript": "^3.4.1"
   },
+  "scripts": {
+    "docs": "cd ./packages/vs-form/docs/ && npm run build"
+  },
   "dependencies": {}
 }

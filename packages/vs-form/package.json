@@ -5,6 +5,10 @@
   "main": "dist/index.js",
   "module": "dist/es/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/vs-form/vs-form-repo"
+  },
   "files": [
     "dist"
   ],
