@@ -1,6 +1,7 @@
 # Form Generator
 
-Documentation available at ...
+[Documentation](https://vs-form-docs.netlify.com)
+
 
 
 
@@ -26,10 +27,8 @@ or
     import React from "react";
     import ReactDOM from "react-dom";
 
-    // import SchemaManager, VsForm and some enums
     import { SchemaManager, VsForm, Component, DataType, enums} from "@vs-form/vs-form";
 
-    // define the
     const schema = {
       values: {
         text1: "Hello"
