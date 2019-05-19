@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "docz dev",
-    "build": "docz build",
+    "build": "npx docz build",
     "bs": "node ./buildSchemas.js",
     "compile": "tsc && npm run compileCust && npm run bs",
     "compileCust": "tsc -p tsconfig2.json"
