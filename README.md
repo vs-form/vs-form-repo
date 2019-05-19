@@ -2,7 +2,7 @@
 
 [Documentation](https://vs-form-docs.netlify.com)
 
-
+[Visual Designer](https://vs-form-designer.netlify.com/)
 
 
 ## What is vs-form
