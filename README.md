@@ -1,5 +1,46 @@
 # Form Generator
 
+**Project is deprecated. We have a completly rewritten Schema-Generator [Project here](https://vs-form.com)**
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+
+
+
+
 [Documentation](https://vs-form-docs.netlify.com)
 
 [Visual Designer](https://vs-form-designer.netlify.com/)
